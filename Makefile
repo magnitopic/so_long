@@ -1,5 +1,4 @@
 # so_long
-
 NAME				=	so_long
 
 SOLONG_SRC			=	src/so_long.c

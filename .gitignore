@@ -1,3 +1,4 @@
 *.out
 *.o
 so_long
+.vscode
