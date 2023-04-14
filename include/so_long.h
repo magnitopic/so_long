@@ -1,23 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/11 15:16:02 by alaparic          #+#    #+#             */
-/*   Updated: 2023/04/14 16:46:12 by alaparic         ###   ########.fr       */
+/*   Created: 2023/04/14 16:16:33 by alaparic          #+#    #+#             */
+/*   Updated: 2023/04/14 16:18:19 by alaparic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <mlx.h>
+#ifndef SO_LONG_H
+# define SO_LONG_H
 
-int	main(void)
-{
-	void	*mlx;
-	void	*win_ptr;
+# include <mlx.h>
 
-	mlx = mlx_init();
-	win_ptr = mlx_new_window(mlx, 500, 500, "SO_LONG");
-	mlx_loop(mlx);
-}
+
+
+#endif
