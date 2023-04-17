@@ -36,11 +36,12 @@ $(NAME):	$(OBJS)
 		-framework AppKit $(OBJS) $(LIBFT_SRC)$(LIBFT) -o $(NAME)
 
 clean:
-			@$(RM) $(NAME) $(OBJS)
+			@$(RM) $(OBJS)
+			@make -C libft fclean
 			@printf "\n$(BLUE)==> $(RED)Removed So_long 🗑️\n$(RESET)"
 
 fclean:		clean
-			@make -C libft fclean
+			@$(RM) $(NAME)
 
 re:			fclean all
 			@printf "$(BLUE)==> $(CYAN)So_long recompiled 🔄\n$(RESET)"
