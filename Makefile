@@ -2,7 +2,8 @@
 NAME				=	so_long
 
 SOLONG_SRC			=	src/so_long.c \
-						src/get_map.c
+						src/get_map.c \
+						src/utils.c
 
 OBJS				= $(SOLONG_SRC:.c=.o)
 

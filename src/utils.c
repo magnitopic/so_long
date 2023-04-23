@@ -1,34 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/14 16:16:33 by alaparic          #+#    #+#             */
-/*   Updated: 2023/04/23 15:54:40 by alaparic         ###   ########.fr       */
+/*   Created: 2023/04/23 15:53:33 by alaparic          #+#    #+#             */
+/*   Updated: 2023/04/23 15:54:04 by alaparic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#include "../include/so_long.h"
 
-# include <mlx.h>
-# include "../libft/libft.h"
-
-typedef struct s_game
+void	raise_error(char *message)
 {
-	void	*mlx;
-	void	*win;
-	char	**map;
-	int		len_x;
-	int		len_y;
-	int		p_x;
-	int		p_y;
-}	t_game;
+	ft_printf("\033[0;31mError\n%s\n\033[0m", message);
+	exit (1);
+}
 
-void	read_map(char **argv, t_game *game);
-void	raise_error(char *message);
-int		find_item(t_game *game, int *x, int *y, char item);
+int	find_item(t_game *game, int *x, int *y, char item)
+{
+	int		i;
+	int		j;
 
-#endif
+	i = 0;
+	while (i < game->len_x)
+	{
+		j = 0;
+		while (j < game->len_y)
+		{
+			if (game->map[j][i] == item)
+			{
+				*x = i;
+				*y = j;
+				return (0);
+			}
+			j++;
+		}
+		i++;
+	}
+	return (-1);
+}
