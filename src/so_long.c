@@ -6,7 +6,7 @@
 /*   By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 15:16:02 by alaparic          #+#    #+#             */
-/*   Updated: 2023/04/23 16:12:41 by alaparic         ###   ########.fr       */
+/*   Updated: 2023/04/23 16:28:26 by alaparic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,13 +58,13 @@ static void	put_sprites(t_game *game)
 
 void	move_player(t_game *game, int new_x, int new_y)
 {
-	ft_printf("x=%d y=%d", game->p_x, game->p_y);
+	//ft_printf("x=%d y=%d", game->p_x, game->p_y);
 	if (game->map[game->p_y + new_y][game->p_x + new_x] != '1')
 	{
 		game->map[game->p_y][game->p_x] = '0';
 		game->map[game->p_y + new_y][game->p_x + new_x] = 'P';
-		game->p_x = new_x;
-		game->p_y = new_y;
+		game->p_x = game->p_x + new_x;
+		game->p_y = game->p_y + new_y;
 	}
 	put_sprites(game);
 }
