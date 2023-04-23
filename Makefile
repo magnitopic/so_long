@@ -3,6 +3,7 @@ NAME				=	so_long
 
 SOLONG_SRC			=	src/so_long.c \
 						src/get_map.c \
+						src/movement.c \
 						src/utils.c
 
 OBJS				= $(SOLONG_SRC:.c=.o)
@@ -38,8 +39,8 @@ $(NAME):	$(OBJS)
 		-framework AppKit $(OBJS) $(LIBFT_SRC)$(LIBFT) -o $(NAME)
 
 clean:
-			@$(RM) $(OBJS)
 			@make -C libft fclean
+			@$(RM) $(OBJS)
 			@printf "\n$(BLUE)==> $(RED)Removed So_long 🗑️\n$(RESET)"
 
 fclean:		clean
