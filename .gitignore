@@ -2,3 +2,4 @@
 *.o
 so_long
 .vscode
+test.c

@@ -6,7 +6,7 @@
 /*   By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 15:16:02 by alaparic          #+#    #+#             */
-/*   Updated: 2023/04/23 13:01:41 by alaparic         ###   ########.fr       */
+/*   Updated: 2023/04/23 13:37:58 by alaparic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,20 +39,31 @@ static void	put_sprites(t_game *game)
 	void	*img;
 	int		img_width;
 	int		img_height;
+	int		i;
+	int		j;
 
-	img = mlx_xpm_file_to_image(game->mlx, "./textures/salida.xpm", &img_width, &img_height);
-	mlx_put_image_to_window(game->mlx, game->win, img, 64*2, 64*2);
-	img = mlx_xpm_file_to_image(game->mlx, "./textures/wall.xpm", &img_width, &img_height);
-	mlx_put_image_to_window(game->mlx, game->win, img, 64, 0);
-	mlx_put_image_to_window(game->mlx, game->win, img, 64, 64*2);
-	mlx_put_image_to_window(game->mlx, game->win, img, 0, 64);
-	img = mlx_xpm_file_to_image(game->mlx, "./textures/coin.xpm", &img_width, &img_height);
-	mlx_put_image_to_window(game->mlx, game->win, img, 64*0, 64*0);
-	img = mlx_xpm_file_to_image(game->mlx, "./textures/space.xpm", &img_width, &img_height);
-	mlx_put_image_to_window(game->mlx, game->win, img, 64*1, 64*1);
-	mlx_put_image_to_window(game->mlx, game->win, img, 0, 64*2);
-	img = mlx_xpm_file_to_image(game->mlx, "./textures/player.xpm", &img_width, &img_height);
-	mlx_put_image_to_window(game->mlx, game->win, img, 0, 64*2);
+	i = 0;
+	while (i < game->len_x)
+	{
+		j = 0;
+		while (j < game->len_y)
+		{
+			if (game->map[j][i] == '1')
+				img = mlx_xpm_file_to_image(game->mlx, "./textures/wall.xpm", &img_width, &img_height);
+			else
+				img = mlx_xpm_file_to_image(game->mlx, "./textures/space.xpm", &img_width, &img_height);
+			mlx_put_image_to_window(game->mlx, game->win, img, i * 64, j * 64);
+			if (game->map[j][i] == 'C')
+				img = mlx_xpm_file_to_image(game->mlx, "./textures/coin.xpm", &img_width, &img_height);
+			else if (game->map[j][i] == 'E')
+				img = mlx_xpm_file_to_image(game->mlx, "./textures/salida.xpm", &img_width, &img_height);
+			else if (game->map[j][i] == 'P')
+				img = mlx_xpm_file_to_image(game->mlx, "./textures/player.xpm", &img_width, &img_height);
+			mlx_put_image_to_window(game->mlx, game->win, img, i * 64, j * 64);
+			j++;
+		}
+		i++;
+	}
 }
 
 int	main(int argc, char **argv)
@@ -67,7 +78,7 @@ int	main(int argc, char **argv)
 	game = malloc(sizeof(t_game));
 	read_map(argv, game);
 	game->mlx = mlx_init();
-	game->win = mlx_new_window(game->mlx, 64 * 15, 64 * 15, "so_long");
+	game->win = mlx_new_window(game->mlx, 64 * game->len_x, 64 * game->len_y, "so_long");
 	// img drawing
 	put_sprites(game);
 	// Events
