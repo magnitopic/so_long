@@ -6,7 +6,7 @@
 /*   By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 15:16:02 by alaparic          #+#    #+#             */
-/*   Updated: 2023/04/23 17:20:25 by alaparic         ###   ########.fr       */
+/*   Updated: 2023/04/23 17:29:50 by alaparic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,5 +83,3 @@ int	main(int argc, char **argv)
 	mlx_hook(game->win, 17, 0L, close_window, game);
 	mlx_loop(game->mlx);
 }
-
-rearrangement
