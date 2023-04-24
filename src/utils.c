@@ -6,7 +6,7 @@
 /*   By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/23 15:53:33 by alaparic          #+#    #+#             */
-/*   Updated: 2023/04/24 15:55:23 by alaparic         ###   ########.fr       */
+/*   Updated: 2023/04/24 16:21:35 by alaparic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	raise_error(char *message)
 int	close_window(t_game *game)
 {
 	mlx_destroy_window(game->mlx, game->win);
+	free_matrix(game->map);
 	exit(0);
 }
 

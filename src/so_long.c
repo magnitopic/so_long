@@ -6,7 +6,7 @@
 /*   By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 15:16:02 by alaparic          #+#    #+#             */
-/*   Updated: 2023/04/24 15:54:58 by alaparic         ###   ########.fr       */
+/*   Updated: 2023/04/24 16:24:47 by alaparic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,17 +68,26 @@ t_game	*start_game_data(void)
 	return (game);
 }
 
+void	ft_leaks(void)
+{
+	system("Leaks so_long");
+}
+
 int	main(int argc, char **argv)
 {
 	t_game	*game;
+	char	*game_name;
 
+	atexit(ft_leaks);
 	if (argc != 2)
 		raise_error("Expected one parameter");
 	game = start_game_data();
 	read_map(argv, game);
 	game->mlx = mlx_init();
-	game->win = mlx_new_window(game->mlx, 64 * game->len_x, 64 * game->len_y, \
-	ft_strjoin("so_long - ", argv[1]));
+	game_name = ft_strjoin("so_long - ", argv[1]);
+	game->win = mlx_new_window \
+	(game->mlx, 64 * game->len_x, 64 * game->len_y, game_name);
+	free(game_name);
 	find_item(game, &game->p_x, &game->p_y, 'P');
 	put_sprites(game);
 	mlx_hook(game->win, 2, 1L << 0, event_handler, game);
