@@ -6,7 +6,7 @@
 /*   By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 15:16:02 by alaparic          #+#    #+#             */
-/*   Updated: 2023/04/23 17:29:50 by alaparic         ###   ########.fr       */
+/*   Updated: 2023/04/24 15:54:58 by alaparic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,8 @@ t_game	*start_game_data(void)
 	t_game	*game;
 
 	game = malloc(sizeof(t_game));
+	if (!game)
+		exit(1);
 	game->p_x = 0;
 	game->p_y = 0;
 	game->moves = 0;
@@ -75,8 +77,8 @@ int	main(int argc, char **argv)
 	game = start_game_data();
 	read_map(argv, game);
 	game->mlx = mlx_init();
-	game->win = mlx_new_window \
-	(game->mlx, 64 * game->len_x, 64 * game->len_y, "so_long");
+	game->win = mlx_new_window(game->mlx, 64 * game->len_x, 64 * game->len_y, \
+	ft_strjoin("so_long - ", argv[1]));
 	find_item(game, &game->p_x, &game->p_y, 'P');
 	put_sprites(game);
 	mlx_hook(game->win, 2, 1L << 0, event_handler, game);

@@ -6,7 +6,7 @@
 /*   By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/23 15:53:33 by alaparic          #+#    #+#             */
-/*   Updated: 2023/04/23 16:57:11 by alaparic         ###   ########.fr       */
+/*   Updated: 2023/04/24 15:55:23 by alaparic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,8 @@ void	raise_error(char *message)
 	exit (1);
 }
 
-int	close_window(int key, t_game *game)
+int	close_window(t_game *game)
 {
-	(void)key;
 	mlx_destroy_window(game->mlx, game->win);
 	exit(0);
 }
