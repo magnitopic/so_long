@@ -39,9 +39,12 @@ make
 
 The objective of the game is to collect all the coins spread out across the map and then exit the game by going through the door in the smallest possible moves.
 
-| Keyboard | Action     |
-| -------- | ---------- |
-| `W`, `↑` | Move up    |
-| `A`, `←` | Move left  |
-| `S`, `↓` | Move down  |
-| `D`, `→` | Move right |
+### Actions
+
+| Keyboard | Action        |
+| -------- | ------------- |
+| `W`, `↑` | Move up       |
+| `A`, `←` | Move left     |
+| `S`, `↓` | Move down     |
+| `D`, `→` | Move right    |
+| `Esc`    | Exit the game |
