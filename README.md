@@ -10,6 +10,8 @@ All the sprites used for this project were made by the wonderful **`@Riesco_144`
 
 Check him out on Twitter: [https://twitter.com/Riesco_144](https://twitter.com/Riesco_144)
 
+# Program
+
 ## Initial installation
 
 ```

@@ -6,7 +6,7 @@
 /*   By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 17:48:14 by alaparic          #+#    #+#             */
-/*   Updated: 2023/04/24 16:59:51 by alaparic         ###   ########.fr       */
+/*   Updated: 2023/04/25 14:40:53 by alaparic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void	read_map(char **argv, t_game *game)
 {
 	char	*file;
 	char	*line;
+	char	*aux;
 	int		fd;
 
 	check_extension(argv);
@@ -32,12 +33,15 @@ void	read_map(char **argv, t_game *game)
 	if (fd == -1)
 		raise_error("Error when opening file. Does the file exist?");
 	file = "";
+	aux = ft_calloc(1, 1);
 	game->len_y = 0;
 	line = get_next_line(fd);
 	while (line != NULL)
 	{
-		ft_strlcat(file, line, ft_strlen(file));
+		file = ft_strjoin(file, line);
+		free(aux);
 		free(line);
+		*aux file;
 		line = get_next_line(fd);
 		game->len_y++;
 	}
