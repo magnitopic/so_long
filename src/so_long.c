@@ -6,7 +6,7 @@
 /*   By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 15:16:02 by alaparic          #+#    #+#             */
-/*   Updated: 2023/04/24 16:24:47 by alaparic         ###   ########.fr       */
+/*   Updated: 2023/04/26 16:38:00 by alaparic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,17 +68,11 @@ t_game	*start_game_data(void)
 	return (game);
 }
 
-void	ft_leaks(void)
-{
-	system("Leaks so_long");
-}
-
 int	main(int argc, char **argv)
 {
 	t_game	*game;
 	char	*game_name;
 
-	atexit(ft_leaks);
 	if (argc != 2)
 		raise_error("Expected one parameter");
 	game = start_game_data();
