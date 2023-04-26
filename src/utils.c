@@ -6,7 +6,7 @@
 /*   By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/23 15:53:33 by alaparic          #+#    #+#             */
-/*   Updated: 2023/04/24 16:21:35 by alaparic         ###   ########.fr       */
+/*   Updated: 2023/04/26 19:00:29 by alaparic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	close_window(t_game *game)
 	exit(0);
 }
 
-int	find_item(t_game *game, int *x, int *y, char item)
+void	find_item(t_game *game, int *x, int *y, char item)
 {
 	int		i;
 	int		j;
@@ -40,11 +40,12 @@ int	find_item(t_game *game, int *x, int *y, char item)
 			{
 				*x = i;
 				*y = j;
-				return (0);
+				return ;
 			}
 			j++;
 		}
 		i++;
 	}
-	return (-1);
+	*x = -1;
+	*y = -1;
 }

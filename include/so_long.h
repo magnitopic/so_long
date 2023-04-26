@@ -6,7 +6,7 @@
 /*   By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 16:16:33 by alaparic          #+#    #+#             */
-/*   Updated: 2023/04/24 15:55:09 by alaparic         ###   ########.fr       */
+/*   Updated: 2023/04/26 19:00:13 by alaparic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ typedef struct s_game
 	int		p_x;
 	int		p_y;
 	int		moves;
+	int		coins;
 }	t_game;
 
 void	raise_error(char *message);
@@ -33,6 +34,6 @@ int		close_window(t_game *game);
 void	read_map(char **argv, t_game *game);
 int		event_handler(int key, t_game *game);
 void	move_player(t_game *game, int new_x, int new_y);
-int		find_item(t_game *game, int *x, int *y, char item);
+void	find_item(t_game *game, int *x, int *y, char item);
 
 #endif
