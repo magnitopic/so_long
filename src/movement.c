@@ -6,7 +6,7 @@
 /*   By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/23 16:56:24 by alaparic          #+#    #+#             */
-/*   Updated: 2023/04/27 18:16:01 by alaparic         ###   ########.fr       */
+/*   Updated: 2023/04/27 18:42:22 by alaparic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,10 @@ void	move_player(t_game *game, int new_x, int new_y)
 		game->p_x = game->p_x + new_x;
 		game->p_y = game->p_y + new_y;
 		game->moves++;
+		if (game->map[game->p_y][game->p_x] != 'E')
+			game->map[game->p_y][game->p_x] = '0';
+		else
+			exit(0);
 		ft_printf("Moves: %d\n", game->moves);
 	}
 }
