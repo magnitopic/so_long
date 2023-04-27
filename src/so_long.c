@@ -6,36 +6,11 @@
 /*   By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 15:16:02 by alaparic          #+#    #+#             */
-/*   Updated: 2023/04/26 16:38:00 by alaparic         ###   ########.fr       */
+/*   Updated: 2023/04/27 18:14:57 by alaparic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
-
-static void	sprites(t_game *game, int i, int j)
-{
-	void	*img;
-	int		img_width;
-	int		img_height;
-
-	if (game->map[j][i] == '1')
-		img = mlx_xpm_file_to_image \
-		(game->mlx, "./textures/wall.xpm", &img_width, &img_height);
-	else
-		img = mlx_xpm_file_to_image \
-		(game->mlx, "./textures/space.xpm", &img_width, &img_height);
-	mlx_put_image_to_window(game->mlx, game->win, img, i * 64, j * 64);
-	if (game->map[j][i] == 'C')
-		img = mlx_xpm_file_to_image \
-		(game->mlx, "./textures/coin.xpm", &img_width, &img_height);
-	else if (game->map[j][i] == 'E')
-		img = mlx_xpm_file_to_image \
-		(game->mlx, "./textures/salida.xpm", &img_width, &img_height);
-	else if (game->map[j][i] == 'P')
-		img = mlx_xpm_file_to_image \
-		(game->mlx, "./textures/player.xpm", &img_width, &img_height);
-	mlx_put_image_to_window(game->mlx, game->win, img, i * 64, j * 64);
-}
 
 static void	put_sprites(t_game *game)
 {
@@ -48,7 +23,14 @@ static void	put_sprites(t_game *game)
 		j = 0;
 		while (j < game->len_y)
 		{
-			sprites(game, i, j);
+			if (game->map[j][i] == '1')
+				put_image(game, i, j, "wall.xpm");
+			else
+				put_image(game, i, j, "space.xpm");
+			if (game->map[j][i] == 'C')
+				put_image(game, i, j, "coin.xpm");
+			else if (game->map[j][i] == 'P')
+				put_image(game, i, j, "player.xpm");
 			j++;
 		}
 		i++;

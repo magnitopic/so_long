@@ -6,7 +6,7 @@
 /*   By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/23 15:53:33 by alaparic          #+#    #+#             */
-/*   Updated: 2023/04/26 19:00:29 by alaparic         ###   ########.fr       */
+/*   Updated: 2023/04/27 18:11:43 by alaparic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,4 +48,17 @@ void	find_item(t_game *game, int *x, int *y, char item)
 	}
 	*x = -1;
 	*y = -1;
+}
+
+void	put_image(t_game *game, int y, int x, char *sprite)
+{
+	char	*path;
+	void	*img;
+	int		img_width;
+	int		img_height;
+
+	path = ft_strjoin("./textures/", sprite);
+	img = mlx_xpm_file_to_image(game->mlx, path, &img_width, &img_height);
+	mlx_put_image_to_window(game->mlx, game->win, img, y * 64, x * 64);
+	free(path);
 }

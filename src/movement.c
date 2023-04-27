@@ -6,7 +6,7 @@
 /*   By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/23 16:56:24 by alaparic          #+#    #+#             */
-/*   Updated: 2023/04/24 15:54:48 by alaparic         ###   ########.fr       */
+/*   Updated: 2023/04/27 18:16:01 by alaparic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,10 @@
 
 void	move_player(t_game *game, int new_x, int new_y)
 {
-	void	*img;
-	int		img_width;
-	int		img_height;
-
 	if (game->map[game->p_y + new_y][game->p_x + new_x] != '1')
 	{
-		game->map[game->p_y][game->p_x] = '0';
-		game->map[game->p_y + new_y][game->p_x + new_x] = 'P';
-		img = mlx_xpm_file_to_image \
-		(game->mlx, "./textures/space.xpm", &img_width, &img_height);
-		mlx_put_image_to_window(game->mlx, game->win, img, \
-		game->p_x * 64, game->p_y * 64);
-		img = mlx_xpm_file_to_image \
-				(game->mlx, "./textures/player.xpm", &img_width, &img_height);
-		mlx_put_image_to_window(game->mlx, game->win, img, \
-		(game->p_x + new_x) * 64, (game->p_y + new_y) * 64);
+		put_image(game, game->p_x, game->p_y, "space.xpm");
+		put_image(game, (game->p_x + new_x), (game->p_y + new_y), "player.xpm");
 		game->p_x = game->p_x + new_x;
 		game->p_y = game->p_y + new_y;
 		game->moves++;

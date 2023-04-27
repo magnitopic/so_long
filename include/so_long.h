@@ -6,7 +6,7 @@
 /*   By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 16:16:33 by alaparic          #+#    #+#             */
-/*   Updated: 2023/04/26 19:00:13 by alaparic         ###   ########.fr       */
+/*   Updated: 2023/04/27 18:11:09 by alaparic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,6 @@ void	read_map(char **argv, t_game *game);
 int		event_handler(int key, t_game *game);
 void	move_player(t_game *game, int new_x, int new_y);
 void	find_item(t_game *game, int *x, int *y, char item);
+void	put_image(t_game *game, int y, int x, char *sprite);
 
 #endif
