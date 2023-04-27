@@ -4,6 +4,8 @@
 
 This project is a very small 2D game. Its purpose is to make you work with textures, sprites, and some other very basic gameplay elements.
 
+![gameImage](images/gameImage.png)
+
 # Sprites and artwork
 
 All the sprites used for this project were made by the wonderful **`@Riesco_144`** ✨
