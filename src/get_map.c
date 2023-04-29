@@ -6,7 +6,7 @@
 /*   By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 17:48:14 by alaparic          #+#    #+#             */
-/*   Updated: 2023/04/29 16:48:25 by alaparic         ###   ########.fr       */
+/*   Updated: 2023/04/29 19:16:15 by alaparic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,19 +21,17 @@ static void	check_extension(char **argv)
 		raise_error("Map with invalid extension.");
 }
 
-void	read_map(char **argv, t_game *game)
+static char	*get_lines(t_game *game, int fd)
 {
 	char	*file;
 	char	*line;
-	int		fd;
 
-	check_extension(argv);
-	fd = open(argv[1], O_RDONLY);
-	if (fd == -1)
-		raise_error("Error when opening file. Does the file exist?");
-	file = ft_calloc(1, 1);
-	game->len_y = 0;
 	line = get_next_line(fd);
+	file = ft_calloc(1, 1);
+	if (!file)
+		exit(1);
+	game->len_y = 0;
+	game->len_x = ft_strlen(line);
 	while (line != NULL)
 	{
 		file = ft_fstrjoin(file, line);
@@ -41,11 +39,24 @@ void	read_map(char **argv, t_game *game)
 		line = get_next_line(fd);
 		game->len_y++;
 	}
+	free(line);
+	return (file);
+}
+
+void	read_map(char **argv, t_game *game)
+{
+	char	*file;
+	int		fd;
+
+	check_extension(argv);
+	fd = open(argv[1], O_RDONLY);
+	if (fd == -1)
+		raise_error("Error when opening file. Does the file exist?");
+	file = get_lines(game, fd);
 	close(fd);
 	game->map = ft_split(file, '\n');
 	game->flood_map = ft_split(file, '\n');
 	game->len_x = ft_strlen(*(game->map));
 	validate_map(game);
-	free(line);
 	free(file);
 }
