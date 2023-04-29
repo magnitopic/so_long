@@ -6,7 +6,7 @@
 /*   By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 15:16:02 by alaparic          #+#    #+#             */
-/*   Updated: 2023/04/27 18:14:57 by alaparic         ###   ########.fr       */
+/*   Updated: 2023/04/28 17:13:21 by alaparic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,6 @@ int	main(int argc, char **argv)
 	game->win = mlx_new_window \
 	(game->mlx, 64 * game->len_x, 64 * game->len_y, game_name);
 	free(game_name);
-	find_item(game, &game->p_x, &game->p_y, 'P');
 	put_sprites(game);
 	mlx_hook(game->win, 2, 1L << 0, event_handler, game);
 	mlx_hook(game->win, 17, 0L, close_window, game);
