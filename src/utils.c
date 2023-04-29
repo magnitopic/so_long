@@ -6,7 +6,7 @@
 /*   By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/23 15:53:33 by alaparic          #+#    #+#             */
-/*   Updated: 2023/04/29 12:28:43 by alaparic         ###   ########.fr       */
+/*   Updated: 2023/04/29 18:18:58 by alaparic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int	count_items(char **map, char item)
 
 	count = 0;
 	i = 0;
-	while (map[i] != '\0')
+	while (map[i] != NULL)
 	{
 		j = 0;
 		while (map[i][j] != '\0')

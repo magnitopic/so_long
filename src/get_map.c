@@ -6,7 +6,7 @@
 /*   By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 17:48:14 by alaparic          #+#    #+#             */
-/*   Updated: 2023/04/29 16:42:53 by alaparic         ###   ########.fr       */
+/*   Updated: 2023/04/29 16:48:25 by alaparic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,41 +19,6 @@ static void	check_extension(char **argv)
 	file_ext = ft_strrchr(argv[1], '.');
 	if (!file_ext || ft_strncmp(file_ext + 1, "ber", ft_strlen(argv[1])) != 0)
 		raise_error("Map with invalid extension.");
-}
-
-static void	flood(char **map, int x, int y)
-{
-	map[y][x] = 'F';
-	if (map[y + 1][x] != '1' && map[y + 1][x] != 'F')
-		flood(map, x, y + 1);
-	if (map[y - 1][x] != '1' && map[y - 1][x] != 'F')
-		flood(map, x, y - 1);
-	if (map[y][x + 1] != '1' && map[y][x + 1] != 'F')
-		flood(map, x + 1, y);
-	if (map[y][x - 1] != '1' && map[y][x - 1] != 'F')
-		flood(map, x - 1, y);
-}
-
-static void	validate_map(t_game *game)
-{
-	int	x;
-	int	y;
-
-	game->coins = count_items(game->map, 'C');
-	if (count_items(game->map, 'P') != 1)
-		raise_error("Map must have one player starting position.");
-	if (count_items(game->map, 'E') != 1)
-		raise_error("Map must have one exit.");
-	find_item(game, &x, &y, 'C');
-	if (x == -1 || y == -1)
-		raise_error("Map must have at least one coin.");
-	find_item(game, &game->p_x, &game->p_y, 'P');
-	find_item(game, &game->e_x, &game->e_y, 'E');
-	flood(game->flood_map, game->p_x, game->p_y);
-	if (count_items(game->flood_map, 'P') + count_items(game->flood_map, 'C') \
-	+ count_items(game->flood_map, 'E') != 0)
-		raise_error("Some map elements are inaccesible.");
-	//check_walls();
 }
 
 void	read_map(char **argv, t_game *game)
