@@ -6,7 +6,7 @@
 /*   By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/23 15:53:33 by alaparic          #+#    #+#             */
-/*   Updated: 2023/04/27 18:11:43 by alaparic         ###   ########.fr       */
+/*   Updated: 2023/04/29 12:28:43 by alaparic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,28 @@ void	find_item(t_game *game, int *x, int *y, char item)
 	}
 	*x = -1;
 	*y = -1;
+}
+
+int	count_items(char **map, char item)
+{
+	int	count;
+	int	i;
+	int	j;
+
+	count = 0;
+	i = 0;
+	while (map[i] != '\0')
+	{
+		j = 0;
+		while (map[i][j] != '\0')
+		{
+			if (map[i][j] == item)
+				count++;
+			j++;
+		}
+		i++;
+	}
+	return (count);
 }
 
 void	put_image(t_game *game, int y, int x, char *sprite)

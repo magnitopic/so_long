@@ -6,7 +6,7 @@
 /*   By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/23 16:56:24 by alaparic          #+#    #+#             */
-/*   Updated: 2023/04/27 18:42:22 by alaparic         ###   ########.fr       */
+/*   Updated: 2023/04/29 15:33:36 by alaparic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,18 @@ void	move_player(t_game *game, int new_x, int new_y)
 {
 	if (game->map[game->p_y + new_y][game->p_x + new_x] != '1')
 	{
+		ft_printf("\033[0;36mMoves: %d\n\033[0m", ++(game->moves));
 		put_image(game, game->p_x, game->p_y, "space.xpm");
 		put_image(game, (game->p_x + new_x), (game->p_y + new_y), "player.xpm");
 		game->p_x = game->p_x + new_x;
 		game->p_y = game->p_y + new_y;
-		game->moves++;
 		if (game->map[game->p_y][game->p_x] != 'E')
 			game->map[game->p_y][game->p_x] = '0';
 		else
+		{
+			ft_printf("\033[0;32mThe player has reached the exit. So long!\n");
 			exit(0);
-		ft_printf("Moves: %d\n", game->moves);
+		}
 	}
 }
 
