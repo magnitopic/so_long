@@ -6,7 +6,7 @@
 /*   By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 16:16:33 by alaparic          #+#    #+#             */
-/*   Updated: 2023/04/29 12:26:35 by alaparic         ###   ########.fr       */
+/*   Updated: 2023/04/29 16:03:22 by alaparic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ typedef struct s_game
 	int		len_y;
 	int		p_x;
 	int		p_y;
+	int		e_x;
+	int		e_y;
 	int		moves;
 	int		coins;
 }	t_game;

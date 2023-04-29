@@ -6,7 +6,7 @@
 /*   By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 17:48:14 by alaparic          #+#    #+#             */
-/*   Updated: 2023/04/29 15:02:15 by alaparic         ###   ########.fr       */
+/*   Updated: 2023/04/29 16:42:53 by alaparic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,17 +39,16 @@ static void	validate_map(t_game *game)
 	int	x;
 	int	y;
 
-	game->coins = count_items(game->map, 'P');
-	find_item(game, &x, &y, 'P');
-	if (x == -1 || y == -1)
-		raise_error("Map must have a player starting position.");
+	game->coins = count_items(game->map, 'C');
+	if (count_items(game->map, 'P') != 1)
+		raise_error("Map must have one player starting position.");
+	if (count_items(game->map, 'E') != 1)
+		raise_error("Map must have one exit.");
 	find_item(game, &x, &y, 'C');
 	if (x == -1 || y == -1)
 		raise_error("Map must have at least one coin.");
-	find_item(game, &x, &y, 'E');
-	if (x == -1 || y == -1)
-		raise_error("Map must have an exit.");
 	find_item(game, &game->p_x, &game->p_y, 'P');
+	find_item(game, &game->e_x, &game->e_y, 'E');
 	flood(game->flood_map, game->p_x, game->p_y);
 	if (count_items(game->flood_map, 'P') + count_items(game->flood_map, 'C') \
 	+ count_items(game->flood_map, 'E') != 0)
