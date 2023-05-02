@@ -6,7 +6,7 @@
 /*   By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 17:48:14 by alaparic          #+#    #+#             */
-/*   Updated: 2023/05/02 12:04:58 by alaparic         ###   ########.fr       */
+/*   Updated: 2023/05/02 17:15:05 by alaparic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ static char	*get_lines(t_game *game, int fd)
 	file = ft_calloc(1, 1);
 	if (!file)
 		exit(1);
-	game->len_y = 0;
 	game->len_x = ft_strlen(line);
 	while (line != NULL)
 	{

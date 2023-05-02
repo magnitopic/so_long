@@ -6,7 +6,7 @@
 /*   By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 15:16:02 by alaparic          #+#    #+#             */
-/*   Updated: 2023/04/28 17:13:21 by alaparic         ###   ########.fr       */
+/*   Updated: 2023/05/02 17:16:42 by alaparic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,19 +37,6 @@ static void	put_sprites(t_game *game)
 	}
 }
 
-t_game	*start_game_data(void)
-{
-	t_game	*game;
-
-	game = malloc(sizeof(t_game));
-	if (!game)
-		exit(1);
-	game->p_x = 0;
-	game->p_y = 0;
-	game->moves = 0;
-	return (game);
-}
-
 int	main(int argc, char **argv)
 {
 	t_game	*game;
@@ -57,7 +44,9 @@ int	main(int argc, char **argv)
 
 	if (argc != 2)
 		raise_error("Expected one parameter");
-	game = start_game_data();
+	game = ft_calloc(1, sizeof(t_game));
+	if (!game)
+		exit(1);
 	read_map(argv, game);
 	game->mlx = mlx_init();
 	game_name = ft_strjoin("so_long - ", argv[1]);
