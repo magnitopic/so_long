@@ -6,7 +6,7 @@
 /*   By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 17:48:14 by alaparic          #+#    #+#             */
-/*   Updated: 2023/04/29 19:16:15 by alaparic         ###   ########.fr       */
+/*   Updated: 2023/05/02 12:04:58 by alaparic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ static char	*get_lines(t_game *game, int fd)
 		file = ft_fstrjoin(file, line);
 		free(line);
 		line = get_next_line(fd);
-		game->len_y++;
 	}
 	free(line);
 	return (file);
@@ -47,6 +46,7 @@ void	read_map(char **argv, t_game *game)
 {
 	char	*file;
 	int		fd;
+	int		i;
 
 	check_extension(argv);
 	fd = open(argv[1], O_RDONLY);
@@ -57,6 +57,9 @@ void	read_map(char **argv, t_game *game)
 	game->map = ft_split(file, '\n');
 	game->flood_map = ft_split(file, '\n');
 	game->len_x = ft_strlen(*(game->map));
+	i = 0;
+	while (game->map[i++] != NULL)
+		game->len_y++;
 	validate_map(game);
 	free(file);
 }

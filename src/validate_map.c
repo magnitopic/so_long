@@ -6,7 +6,7 @@
 /*   By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 16:41:59 by alaparic          #+#    #+#             */
-/*   Updated: 2023/04/29 18:19:48 by alaparic         ###   ########.fr       */
+/*   Updated: 2023/05/02 12:11:36 by alaparic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,22 @@ static void	check_chars(t_game *game)
 	}
 }
 
+static void	check_rectangle(t_game *game)
+{
+	int		i;
+
+	i = 0;
+	while (game->map[i] != NULL)
+	{
+		if ((int)ft_strlen(game->map[i]) != game->len_x)
+			raise_error("Map must be rectangle.");
+		i++;
+	}
+}
+
 void	validate_map(t_game *game)
 {
+	check_rectangle(game);
 	game->coins = count_items(game->map, 'C');
 	if (count_items(game->map, 'P') != 1)
 		raise_error("Map must have one player starting position.");
