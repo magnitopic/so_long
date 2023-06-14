@@ -6,7 +6,7 @@ This project is a very small 2D game. Its purpose is to make you work with textu
 
 > Video showing the game: [https://youtu.be/GG_RffnJ-9A](https://youtu.be/GG_RffnJ-9A)
 
-![gameImage](images/gameImage.png)
+<img width="944" alt="gameImage" src="https://github.com/magnitopic/so_long/assets/21156058/eb5b36e7-1b97-4c00-8b05-8c77b104e46a">
 
 # Sprites and artwork
 
