@@ -6,7 +6,7 @@
 /*   By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 17:48:14 by alaparic          #+#    #+#             */
-/*   Updated: 2023/05/02 17:15:05 by alaparic         ###   ########.fr       */
+/*   Updated: 2023/06/16 18:15:15 by alaparic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,8 @@ void	read_map(char **argv, t_game *game)
 	fd = open(argv[1], O_RDONLY);
 	if (fd == -1)
 		raise_error("Error when opening file. Does the file exist?");
+	if (read(fd, 0, 1) == 0)
+		raise_error("Empty map file");
 	file = get_lines(game, fd);
 	close(fd);
 	game->map = ft_split(file, '\n');
