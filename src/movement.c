@@ -6,7 +6,7 @@
 /*   By: alaparic <alaparic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/23 16:56:24 by alaparic          #+#    #+#             */
-/*   Updated: 2023/04/29 16:34:32 by alaparic         ###   ########.fr       */
+/*   Updated: 2023/06/16 18:04:50 by alaparic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,17 +38,17 @@ void	move_player(t_game *game, int new_x, int new_y)
 	}
 }
 
-int	event_handler(int key, t_game *game)
+int	event_handler(enum e_keys key, t_game *game)
 {
-	if (key == 53)
+	if (key == ESC)
 		close_window(game);
-	else if (key == 13 || key == 126)
+	else if (key == W || key == UP)
 		move_player(game, 0, -1);
-	else if (key == 0 || key == 123)
+	else if (key == A || key == LEFT)
 		move_player(game, -1, 0);
-	else if (key == 1 || key == 125)
+	else if (key == S || key == DOWN)
 		move_player(game, 0, 1);
-	else if (key == 2 || key == 124)
+	else if (key == D || key == RIGHT)
 		move_player(game, 1, 0);
 	return (0);
 }
