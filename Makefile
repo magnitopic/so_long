@@ -16,7 +16,8 @@ LIBFT_SRC			=	./libft/
 # Compiler
 CC					=	gcc
 RM					=	rm -f
-CFLAGS				=	-Wall -Werror -Wextra
+CFLAGS				=	-Wall -Werror -Wextra 
+LIBX_FLAGS			=	-Imlx -lmlx -framework OpenGL -framework AppKit
 
 # Colours
 RED					=	\033[0;31m
@@ -36,8 +37,7 @@ $(LIBFT):
 			@make -C libft bonus
 
 $(NAME):	$(OBJS)
-			@$(CC) $(CFLAGS) -Imlx -lmlx -framework OpenGL \
-		-framework AppKit $(OBJS) $(LIBFT_SRC)$(LIBFT) -o $(NAME)
+			@$(CC) $(CFLAGS) $(LIBX_FLAGS) $(OBJS) $(LIBFT_SRC)$(LIBFT) -o $(NAME)
 
 clean:
 			@make -C libft fclean
